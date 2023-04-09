@@ -10,6 +10,7 @@ fn main() {
         .add_state::<AppState>()
         // .add_plugin(MainMenuPlugin)
         // .add_plugin(GamePlugin)
+        .add_startup_system(spawn_camera)
         .run();
 }
 
@@ -19,4 +20,8 @@ pub enum AppState {
     MainMenu,
     Gameplay,
     GameOver,
+}
+
+fn spawn_camera(mut commands: Commands) {
+    commands.spawn(Camera2dBundle::default())
 }
