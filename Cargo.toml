@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 bevy = "0.10.0"
-rand = "0.8.5"
+bevy_editor_pls = "0.4.0"
 
 # Enable a small amount of optimization in debug mode
 [profile.dev]
