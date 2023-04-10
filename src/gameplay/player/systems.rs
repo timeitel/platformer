@@ -9,7 +9,7 @@ pub fn spawn_player(
     asset_server: Res<AssetServer>,
 ) {
     let atlas = TextureAtlas::from_grid(
-        asset_server.load("Main Characters/Mask Dude/Idle (32x32).png"),
+        asset_server.load("sprites/characters/mask_man/Idle (32x32).png"),
         Vec2::splat(32.),
         11,
         1,
