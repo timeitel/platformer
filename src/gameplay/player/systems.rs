@@ -1,3 +1,5 @@
+use crate::gameplay::animation::components::*;
+
 use super::components::Player;
 use bevy::prelude::*;
 
@@ -25,5 +27,10 @@ pub fn spawn_player(
             ..Default::default()
         },
         Player,
+        SpriteAnimation {
+            len: 11,
+            frame_time: 1. / 20.,
+        },
+        FrameTime(0.0),
     ));
 }

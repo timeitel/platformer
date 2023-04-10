@@ -3,6 +3,7 @@ mod gameplay;
 // use main_menu::MainMenuPlugin;
 
 use bevy::prelude::*;
+use gameplay::animation::systems::*;
 use gameplay::player::systems::*;
 
 fn main() {
@@ -13,6 +14,7 @@ fn main() {
         // .add_plugin(GamePlugin)
         .add_startup_system(spawn_camera)
         .add_startup_system(spawn_player)
+        .add_system(animate_sprite)
         .run();
 }
 
