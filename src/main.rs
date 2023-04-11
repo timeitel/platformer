@@ -15,6 +15,7 @@ fn main() {
         .add_startup_system(spawn_camera)
         .add_startup_system(spawn_player)
         .add_system(animate_sprite)
+        .add_system(move_player)
         .run();
 }
 
