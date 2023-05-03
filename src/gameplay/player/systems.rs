@@ -49,3 +49,33 @@ pub fn move_player(
         transform.translation.x += MOVE_SPEED * time.delta_seconds();
     }
 }
+
+pub fn change_player_animation(
+    mut player: Query<
+        (
+            &mut Handle<TextureAtlas>,
+            &mut SpriteAnimation,
+            &mut TextureAtlasSprite,
+        ),
+        With<Player>,
+    >,
+    input: Res<Input<KeyCode>>,
+    mut texture_atlas: ResMut<Assets<TextureAtlas>>,
+    asset_server: Res<AssetServer>,
+) {
+    let (mut atlas, mut animation, mut sprite) = player.single_mut();
+
+    let left_keys = [KeyCode::Left, KeyCode::A];
+    let right_keys = [KeyCode::Right, KeyCode::D];
+
+    if input.any_just_pressed(left_keys) {
+        sprite.flip_x = true;
+    } else if input.any_just_pressed(right_keys) && !input.any_pressed(left_keys) {
+        sprite.flip_x = false;
+    } else if input.any_just_released(left_keys)
+        && !input.any_pressed(left_keys)
+        && input.any_pressed(right_keys)
+    {
+        sprite.flip_x = false;
+    }
+}
